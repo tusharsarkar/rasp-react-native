@@ -1,0 +1,22 @@
+const path = require('path');
+const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+
+// The library lives one level up and is linked in via "file:..", so Metro
+// needs to watch it directly and fall back to this app's node_modules for
+// shared deps (react/react-native) to avoid bundling two copies.
+const root = path.resolve(__dirname, '..');
+
+/**
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
+const config = {
+  watchFolders: [root],
+  resolver: {
+    nodeModulesPaths: [path.resolve(__dirname, 'node_modules')],
+  },
+};
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

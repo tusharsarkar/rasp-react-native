@@ -1,0 +1,8 @@
+node_modules/
+lib/
+android/build/
+android/.gradle/
+ios/build/
+ios/Pods/
+*.log
+.DS_Store
